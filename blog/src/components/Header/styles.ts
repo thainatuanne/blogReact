@@ -25,3 +25,10 @@ export const Title = styled.h1`
 export const Logo = styled.img`
     width: 100px;
 `
+
+export const LogoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+`;

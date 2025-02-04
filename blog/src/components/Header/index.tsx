@@ -1,8 +1,20 @@
+import { useContext } from 'react';
 import logo from '../../assets/logo.png'
+import { Container, Logo, LogoContainer, Title, Wrapper } from './styles'
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { ThemeToggleButton } from "../../contexts/ThemeToggleButton";
 
-import { Container, Logo, Title, Wrapper } from './styles'
 
 export function Header() {
+
+    const themeContext = useContext(ThemeContext);
+
+    if (!themeContext) {
+        return null;
+    }
+
+    const { theme, toggleTheme } = themeContext;
+    
     return (
         <Wrapper>
             <Container>
@@ -11,7 +23,14 @@ export function Header() {
                     <p>Por favor, faça login para continuar.</p>
                 </div>
 
-                <Logo src={logo} />
+                <LogoContainer>
+                    <Logo src={logo} />
+
+                    <ThemeToggleButton onClick={toggleTheme}>
+                        {theme === "dark" ? "🌞 Claro" : "🌙 Escuro"}
+                    </ThemeToggleButton>
+                </LogoContainer>
+      
             </Container>
         </Wrapper>
     )
